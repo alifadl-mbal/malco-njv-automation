@@ -1,0 +1,23 @@
+[project]
+name = "investcorp-engine"
+version = "0.14.0"
+description = "Investcorp and EFG statements -> Orion NJV upload (Malco Capital Investments)"
+requires-python = ">=3.10"
+dependencies = [
+    "pdfplumber>=0.11",      # PDF text extraction (pure Python — no Poppler needed)
+    "python-calamine>=0.2",  # reads the split calculation workbooks
+    "reportlab>=4.0",        # validation report PDF
+    "streamlit>=1.36",       # local web app (app.py)
+    "xlwt>=1.3",             # Orion JV upload file (.xls, as the template)
+]
+
+[project.scripts]
+investcorp-engine = "investcorp_engine.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["investcorp_engine"]
+
